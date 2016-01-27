@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">SFO Crime</string>
+    <string name="title_activity_maps">SFO Crime</string>
+    <string name="loading">Loading Data...</string>
+    <string name="OK">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="warning">App title cannot be empty</string>
+    <string name="warningMsg">No locations found for this offense</string>
+    <string name="Showburglarylocations">SHOW BURGLARY LOCATIONS</string>
+    <string name="showTheftLocations">Show LARCENY/THEFT locations</string>
+    <string name="showNonCriminalLocations">Show NON-CRIMINAL locations</string>
+    <string name="showOtherOffensesLocations">Show OTHER OFFENSES locations</string>
+    <string name="showVandalismLocations">Show VANDALISM locations</string>
+    <string name="showAssaultLocations">Show ASSAULT locations</string>
+    <string name="showVehicleTheftLocations">Show VEHICLE THEFT locations</string>
+    <string name="showMissingPersonLocations">Show MISSING PERSON locations</string>
+
+</resources>
