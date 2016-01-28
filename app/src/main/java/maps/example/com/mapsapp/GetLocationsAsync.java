@@ -42,7 +42,6 @@ class GetLocationsAsync extends AsyncTask {
     protected Object doInBackground(Object[] params) {
 
         InputStream is = null;
-        int length = 500;
         String URL = "https://data.sfgov.org/resource/ritf-b9ki.json?$where=:created_at>='2015-12-01'";
         if (limit != -1 && offset != -1) {
             URL = "https://data.sfgov.org/resource/ritf-b9ki.json?$limit=" + limit + "&$offset=" + offset + "&$where=:created_at>='2015-12-01' ";
@@ -55,10 +54,9 @@ class GetLocationsAsync extends AsyncTask {
             conn.setRequestMethod("GET");
             conn.setDoInput(true);
             conn.connect();
-            int response = conn.getResponseCode();
             is = conn.getInputStream();
 
-            String contentAsString = convertInputStreamToString(is, length);
+            String contentAsString = convertInputStreamToString(is);
             return contentAsString;
         } catch (Exception ex) {
             Log.e("EXCEPTION", ex.getLocalizedMessage());
@@ -106,7 +104,7 @@ class GetLocationsAsync extends AsyncTask {
         }
     }
 
-    public String convertInputStreamToString(InputStream stream, int length) {
+    public String convertInputStreamToString(InputStream stream) {
         java.util.Scanner s = new java.util.Scanner(stream).useDelimiter("\\A");
         return s.hasNext() ? s.next() : "";
     }
