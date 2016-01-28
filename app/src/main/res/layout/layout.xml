@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
     android:background="@android:color/holo_blue_dark">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent" android:layout_height="fill_parent"
-    android:background="@android:color/holo_blue_dark"
-    android:orientation="vertical">
-
-    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="125px"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:background="@android:color/darker_gray"
-        >
-        <TextView
-            android:id="@+id/title"
-            android:layout_marginTop="25px"
-            android:paddingLeft="25px"
-            android:layout_weight="1"
-            android:gravity="left"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="San Francisco Crime Locations"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"/>
+        android:layout_height="fill_parent"
+        android:background="@android:color/holo_blue_dark"
+        android:orientation="vertical">
 
-        <TextView
-            android:layout_marginTop="25px"
-            android:paddingRight="20px"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+"
-            android:textColor="@android:color/holo_red_dark"
-            android:textSize="20sp"
-            android:onClick="changeTitle"/>
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="125px"
+            android:background="@android:color/darker_gray"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25px"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:paddingLeft="25px"
+                android:text="San Francisco Crime Locations"
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25px"
+                android:layout_weight="1"
+                android:gravity="right"
+                android:onClick="changeTitle"
+                android:paddingRight="20px"
+                android:text="+"
+                android:textColor="@android:color/holo_red_dark"
+                android:textSize="20sp" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -51,105 +53,116 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Pagination Settings"
-                android:textStyle="bold"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white"
+                android:textStyle="bold" />
 
-            <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:weightSum="2">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Set Limit"
-                android:textColor="@android:color/white"/>
-            <EditText
-                android:id="@+id/limit"
-                android:layout_width="120px"
-                android:inputType="number"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </LinearLayout>
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="2">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Set Limit"
+                    android:textColor="@android:color/white" />
+
+                <EditText
+                    android:id="@+id/limit"
+                    android:layout_width="120px"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="number" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Set Offset"
-                    android:textColor="@android:color/white"/>
+                    android:textColor="@android:color/white" />
+
                 <EditText
                     android:id="@+id/offset"
                     android:layout_width="135px"
                     android:layout_height="wrap_content"
 
-                    android:inputType="number"
-                    android:layout_weight="1"/>
+                    android:layout_weight="1"
+                    android:inputType="number" />
             </LinearLayout>
         </LinearLayout>
 
-<LinearLayout
-    android:padding="10px"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="10px"
 
-   >
+            >
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
 
-        android:text="@string/Showburglarylocations"
-        android:onClick="showBurglaryLocations"/>
+                android:onClick="showBurglaryLocations"
+                android:text="@string/Showburglarylocations" />
 
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/showTheftLocations"
-        android:onClick="showTheftLocations"/>
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:text="@string/showNonCriminalLocations"
-        android:onClick="showNonCriminalLocations"/>
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="showTheftLocations"
+                android:text="@string/showTheftLocations" />
 
-        android:text="@string/showOtherOffensesLocations"
-        android:onClick="showOtherOffensesLocations"/>
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="showNonCriminalLocations"
+                android:text="@string/showNonCriminalLocations" />
 
-        android:text="@string/showVandalismLocations"
-        android:onClick="showVandalismLocations"/>
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
 
-        android:text="@string/showAssaultLocations"
-        android:onClick="showAssaultLocations"/>
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+                android:onClick="showOtherOffensesLocations"
+                android:text="@string/showOtherOffensesLocations" />
 
-        android:text="@string/showVehicleTheftLocations"
-        android:onClick="showVehicleTheftLocations"/>
-    <Button
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
 
-        android:text="@string/showMissingPersonLocations"
-        android:onClick="showMissingPersonLocations"/>
-</LinearLayout>
-</LinearLayout>
-    </ScrollView>
+                android:onClick="showVandalismLocations"
+                android:text="@string/showVandalismLocations" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+
+                android:onClick="showAssaultLocations"
+                android:text="@string/showAssaultLocations" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+
+                android:onClick="showVehicleTheftLocations"
+                android:text="@string/showVehicleTheftLocations" />
+
+            <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+
+                android:onClick="showMissingPersonLocations"
+                android:text="@string/showMissingPersonLocations" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

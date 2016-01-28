@@ -1,14 +1,9 @@
 package maps.example.com.mapsapp;
 
-import android.app.ActionBar;
-import android.app.DownloadManager;
-import android.content.Loader;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v4.app.FragmentActivity;
 import android.widget.Toast;
 
-import com.google.android.gms.appdatasearch.GetRecentContextCall;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -17,25 +12,18 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.LatLngBounds;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import org.json.JSONObject;
-
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
-{
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
     public ArrayList<Location> arrList = new ArrayList<Location>();
+    int index = 0;
+    private GoogleMap mMap;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState)
-    {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
@@ -51,8 +39,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     @Override
-    public void onMapReady(GoogleMap googleMap)
-    {
+    public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
         ArrayList<LatLng> lat = new ArrayList<LatLng>();
@@ -61,15 +48,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         int arrsize = arrList.size();
 
-        int size= 0;
-        if(arrsize > 0)
-        {
-            for(Location loc : arrList)
-            {
+        int size = 0;
+        if (arrsize > 0) {
+            for (Location loc : arrList) {
 
-                if(SplashScreen.offenseType.equals(loc.offenseType))
-                {
-                    size = size+1;
+                if (SplashScreen.offenseType.equals(loc.offenseType)) {
+                    size = size + 1;
 
                     double latitude = Double.parseDouble(loc.latitude);
                     double longitude = Double.parseDouble(loc.longitude);
@@ -78,17 +62,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                     lat.add(address);
 
                     builder.include(new LatLng(latitude, longitude));
-
-                    if(!SplashScreen.showAll && size == 10)
-                    {
-                        break;
-                    }
                 }
 
             }
 
-            for(LatLng lt : lat )
-            {
+            for (LatLng lt : lat) {
                 drawMarker(mMap, lt);
             }
 
@@ -102,17 +80,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding);
 
             mMap.animateCamera(cu);
-        }
-        else
-        {
+        } else {
             Toast.makeText(MapsActivity.this, R.string.warningMsg, Toast.LENGTH_SHORT).show();
         }
     }
 
-
-    int index = 0;
-    private void drawMarker(GoogleMap googleMap,LatLng point)
-    {
+    private void drawMarker(GoogleMap googleMap, LatLng point) {
         index = index + 1;
 
         // Creating an instance of MarkerOptions
@@ -124,41 +97,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    public MarkerOptions getMarkerPositionAndColorBasedOnCrimeRate(MarkerOptions markerOptions, int index, LatLng point)
-    {
+    public MarkerOptions getMarkerPositionAndColorBasedOnCrimeRate(MarkerOptions markerOptions, int index, LatLng point) {
         // Setting latitude and longitude for the marker
-        if(index == 1)
-        {
+        if (index == 1) {
             markerOptions.position(point);
             markerOptions.icon(BitmapDescriptorFactory
                     .defaultMarker(BitmapDescriptorFactory.HUE_RED));
-        }
-        else if((index % 2) == 0 )
-        {
+        } else if ((index % 2) == 0) {
             markerOptions.position(point);
             markerOptions.icon(BitmapDescriptorFactory
                     .defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
-        }
-        else if((index % 3) == 0)
-        {
+        } else if ((index % 3) == 0) {
             markerOptions.position(point);
             markerOptions.icon(BitmapDescriptorFactory
                     .defaultMarker(BitmapDescriptorFactory.HUE_ROSE));
-        }
-        else if((index % 5) == 0)
-        {
+        } else if ((index % 5) == 0) {
             markerOptions.position(point);
             markerOptions.icon(BitmapDescriptorFactory
                     .defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
-        }
-        else
-        {
+        } else {
             markerOptions.position(point);
             markerOptions.icon(BitmapDescriptorFactory
                     .defaultMarker(BitmapDescriptorFactory.HUE_CYAN));
         }
 
-        return  markerOptions;
+        return markerOptions;
     }
 
 }
