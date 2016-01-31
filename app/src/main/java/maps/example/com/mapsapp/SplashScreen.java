@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -81,13 +82,21 @@ public class SplashScreen extends Activity {
     }
 
     public void startActivity() {
+
         String limitStr = limitText.getText().toString();
         String offsetStr = offsetText.getText().toString();
         int limit = -1;
         int offset = -1;
-        if (!(limitStr.trim().equals("") && offsetStr.trim().equals(""))) {
-            limit = Integer.parseInt(limitStr);
-            offset = Integer.parseInt(offsetStr);
+        try
+        {
+            if (!(limitStr.trim().equals("") && offsetStr.trim().equals(""))) {
+                limit = Integer.parseInt(limitStr);
+                offset = Integer.parseInt(offsetStr);
+            }
+        }
+        catch(Exception ex)
+        {
+            Log.e("EXCEPTION", ex.getLocalizedMessage());
         }
         new GetLocationsAsync((SplashScreen) ctx, limit, offset).execute();
     }

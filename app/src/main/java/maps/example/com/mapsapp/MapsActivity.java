@@ -40,49 +40,58 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
 
-        ArrayList<LatLng> lat = new ArrayList<LatLng>();
-        LatLngBounds.Builder builder = new LatLngBounds.Builder();
+       try
+       {
+           mMap = googleMap;
 
-
-        int arrsize = arrList.size();
-
-        int size = 0;
-        if (arrsize > 0) {
-            for (Location loc : arrList) {
-
-                if (SplashScreen.offenseType.equals(loc.offenseType)) {
-                    size = size + 1;
-
-                    double latitude = Double.parseDouble(loc.latitude);
-                    double longitude = Double.parseDouble(loc.longitude);
-
-                    LatLng address = new LatLng(latitude, longitude);
-                    lat.add(address);
-
-                    builder.include(new LatLng(latitude, longitude));
-                }
-
-            }
-
-            for (LatLng lt : lat) {
-                drawMarker(mMap, lt);
-            }
-
-            LatLngBounds bounds = builder.build();
+           ArrayList<LatLng> lat = new ArrayList<LatLng>();
+           LatLngBounds.Builder builder = new LatLngBounds.Builder();
 
 
-            int width = getResources().getDisplayMetrics().widthPixels;
-            int height = getResources().getDisplayMetrics().heightPixels;
-            int padding = (int) (width * 0.12); // offset from edges of the map 12% of screen
+           int arrsize = arrList.size();
 
-            CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding);
+           int size = 0;
+           if (arrsize > 0) {
+               for (Location loc : arrList) {
 
-            mMap.animateCamera(cu);
-        } else {
-            Toast.makeText(MapsActivity.this, R.string.warningMsg, Toast.LENGTH_SHORT).show();
-        }
+                   if (SplashScreen.offenseType.equals(loc.offenseType)) {
+                       size = size + 1;
+
+                       double latitude = Double.parseDouble(loc.latitude);
+                       double longitude = Double.parseDouble(loc.longitude);
+
+                       LatLng address = new LatLng(latitude, longitude);
+                       lat.add(address);
+
+                       builder.include(new LatLng(latitude, longitude));
+                   }
+
+               }
+
+               for (LatLng lt : lat) {
+                   drawMarker(mMap, lt);
+               }
+
+               LatLngBounds bounds = builder.build();
+
+
+               int width = getResources().getDisplayMetrics().widthPixels;
+               int height = getResources().getDisplayMetrics().heightPixels;
+               int padding = (int) (width * 0.12); // offset from edges of the map 12% of screen
+
+               CameraUpdate cu = CameraUpdateFactory.newLatLngBounds(bounds, width, height, padding);
+
+               mMap.animateCamera(cu);
+           } else {
+               Toast.makeText(MapsActivity.this, R.string.warningMsg, Toast.LENGTH_SHORT).show();
+           }
+       }
+       catch (Exception ex)
+       {
+           Toast.makeText(MapsActivity.this, R.string.warningMsg, Toast.LENGTH_SHORT).show();
+       }
+
     }
 
     private void drawMarker(GoogleMap googleMap, LatLng point) {
